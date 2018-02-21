@@ -26,7 +26,7 @@ import java.util.List;
  * Created by yanqi on 2018/2/14.
  */
 
-public class InputCodeView extends LinearLayout implements View.OnClickListener, InputTextView.OnKeyEventListener {
+public class VerificationInputCodeView extends LinearLayout implements View.OnClickListener, InputTextView.OnKeyEventListener {
     private Context mContext;
     private int MAX_COUNT = 4;//验证码数量
     private int inputType;
@@ -61,15 +61,15 @@ public class InputCodeView extends LinearLayout implements View.OnClickListener,
 
     private List<String> codeData = new ArrayList<>();
 
-    public InputCodeView(Context context) {
+    public VerificationInputCodeView(Context context) {
         this(context, null);
     }
 
-    public InputCodeView(Context context, @Nullable AttributeSet attrs) {
+    public VerificationInputCodeView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public InputCodeView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public VerificationInputCodeView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
         TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.InputCode);
