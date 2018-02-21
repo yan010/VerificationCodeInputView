@@ -39,6 +39,7 @@
     <com.yanqi.verificationcodeinputview.VerificationInputCodeView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:margin="10dp"
         app:padding="20dp" />
 
     <TextView
@@ -53,6 +54,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:number="6" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="自定义宽高："
+        android:textSize="18dp" />
+
+    <com.yanqi.verificationcodeinputview.VerificationInputCodeView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:average="false"
+        app:childHeight="50dp"
+        app:childWidth="50dp" />
 
     <TextView
         android:layout_width="wrap_content"
