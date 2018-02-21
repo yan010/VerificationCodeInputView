@@ -1,3 +1,4 @@
+[![](https://jitpack.io/v/yan010/VerificationCodeInputView.svg)](https://jitpack.io/#yan010/VerificationCodeInputView)
 
 # VerificationCodeInputView
 数字验证码输入控件，支持所有键盘，可完美输入删除
