@@ -1,4 +1,4 @@
-package com.example.verificationcodeinputview;
+package com.yanqi.verificationcodeinputview;
 
 import android.content.Context;
 import android.util.AttributeSet;

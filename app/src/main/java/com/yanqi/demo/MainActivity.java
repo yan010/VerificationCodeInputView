@@ -1,10 +1,11 @@
-package com.example.yanqi.demo;
+package com.yanqi.demo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.verificationcodeinputview.InputCodeView;
+import com.yanqi.demo.R;
+import com.yanqi.verificationcodeinputview.InputCodeView;
 
 import java.util.List;
 
