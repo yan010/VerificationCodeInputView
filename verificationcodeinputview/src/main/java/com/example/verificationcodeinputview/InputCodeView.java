@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.support.annotation.Nullable;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.util.AttributeSet;
 import android.view.Gravity;
@@ -28,21 +29,24 @@ import java.util.List;
 public class InputCodeView extends LinearLayout implements View.OnClickListener, InputTextView.OnKeyEventListener {
     private Context mContext;
     private int MAX_COUNT = 4;//验证码数量
-
     private int inputType;
-    private int padding;
+
+    private int padding = 14;
     private int leftPadding;
     private int rightPadding;
     private int topPadding;
     private int bottomPadding;
-    private int margin;
+    private int margin = 14;
     private int leftMargin;
     private int rightMargin;
     private int topMargin;
     private int bottomMargin;
+    private int childWidth = 120;
+    private int childHeigh = ViewGroup.LayoutParams.WRAP_CONTENT;
+    private boolean average = true;
     private Drawable focusDrawable;
     private Drawable normalDrawable;
-    private int textSize = 15;
+    private int textSize = 20;
     private ColorStateList textColor;
 
     private OnKeyEvent mOnKeyEvent;
@@ -120,6 +124,15 @@ public class InputCodeView extends LinearLayout implements View.OnClickListener,
             } else if (attr == R.styleable.InputCode_textSize) {
                 textSize = a.getDimensionPixelSize(attr, textSize);
 
+            } else if (attr == R.styleable.InputCode_childWidth) {
+                childWidth = a.getDimensionPixelSize(attr, -1);
+
+            } else if (attr == R.styleable.InputCode_childHeight) {
+                childHeigh = a.getDimensionPixelSize(attr, -1);
+
+            } else if (attr == R.styleable.InputCode_average) {
+                average = a.getBoolean(attr, true);
+
             }
         }
         initItemCode();
@@ -143,17 +156,28 @@ public class InputCodeView extends LinearLayout implements View.OnClickListener,
                 } else {
                     inputTextView.setBackgroundDrawable(setSelector(focusDrawable, normalDrawable));
                 }
+            } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    inputTextView.setBackground(setSelector(mContext.getDrawable(R.drawable.focus_bg)
+                            , mContext.getDrawable(R.drawable.normal_bg)));
+                } else {
+                    inputTextView.setBackground(setSelector(mContext.getResources().getDrawable(R.drawable.focus_bg)
+                            , mContext.getResources().getDrawable(R.drawable.normal_bg)));
+                }
             }
             inputTextView.setGravity(Gravity.CENTER);
             LayoutParams layoutParams;
-            layoutParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+            layoutParams = new LayoutParams(childWidth, childHeigh, average ? 1 : 0);
             if (margin != 0) {
                 layoutParams.setMargins(margin, margin, margin, margin);
             } else {
                 layoutParams.setMargins(leftMargin, topMargin, rightMargin, bottomMargin);
             }
+            inputTextView.setFilters(new InputFilter[]{new InputFilter.LengthFilter(1)});
             inputTextView.setLayoutParams(layoutParams);
-            inputTextView.setMinWidth(500);//解决输入文字移位
+            if (average) {
+                inputTextView.setMinWidth(500);//解决输入文字移位
+            }
             inputTextView.setmOnKeyEventListener(this);
 
             final int finalI = i;
@@ -169,7 +193,7 @@ public class InputCodeView extends LinearLayout implements View.OnClickListener,
      * @param focusDrawable  foucus样式
      * @return
      */
-    public StateListDrawable setSelector(Drawable focusDrawable, Drawable normalDrawable) {
+    private StateListDrawable setSelector(Drawable focusDrawable, Drawable normalDrawable) {
         StateListDrawable bg = new StateListDrawable();
         bg.addState(new int[]{android.R.attr.state_focused}, focusDrawable);
         bg.addState(new int[]{}, normalDrawable);
@@ -224,11 +248,16 @@ public class InputCodeView extends LinearLayout implements View.OnClickListener,
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        int temp = count;
+        if (count == MAX_COUNT) {
+            temp = count - 1;
+        }
+        inputTextViews.get(temp).requestFocus();
         InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         if (imm != null) {
-            imm.viewClicked(inputTextViews.get(count));
+            imm.viewClicked(inputTextViews.get(temp));
         }
-        imm.showSoftInput(inputTextViews.get(count), 0);
+        imm.showSoftInput(inputTextViews.get(temp), 0);
         return true;
     }
 

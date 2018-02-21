@@ -149,6 +149,9 @@
         <attr name="marginRight" format="dimension" />
         <attr name="marginTop" format="dimension" />
         <attr name="marginBottom" format="dimension" />
+        <attr name="childWidth" format="dimension" />
+        <attr name="childHeight" format="dimension" />
+        <attr name="average" format="boolean" />
         <attr name="textColor" format="color|reference" />
         <attr name="textSize" />
     </declare-styleable>
