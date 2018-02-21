@@ -72,4 +72,4 @@ mInputCodeView.setmOnKeyEvent(new VerificationInputCodeView.OnKeyEvent() {
 
 ## 讨论
 
-QQ: 799782239
+QQ: 799782239  (注明github数字验证码项目+您的称呼)
