@@ -1,6 +1,3 @@
-[![Build Status](https://travis-ci.org/chenenyu/Router.svg?branch=master)](https://travis-ci.org/chenenyu/Router) 
-![license](https://img.shields.io/badge/license-Apache%202-yellow.svg) 
-![PullRequest](https://img.shields.io/badge/PRs-welcome-brightgreen.svg) 
 
 # VerificationCodeInputView
 数字验证码输入控件，支持所有键盘，可完美输入删除
@@ -62,7 +59,7 @@ mInputCodeView.setmOnKeyEvent(new VerificationInputCodeView.OnKeyEvent() {
         app:marginTop="20dp"
         app:marginBottom="20dp"
         app:textSize="20dp"
-        app:textColor="#123456"
+        app:textColor="@color/colorAccent"
         app:focusDrawable="@drawable/code_input_focus_bg"
         app:normalDrawable="@drawable/code_input_normal_bg"
         app:number="4" />
