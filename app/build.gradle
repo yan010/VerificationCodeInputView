@@ -4,8 +4,8 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.yanqi.verificationcodeinputview"
-        minSdkVersion 17
-        targetSdkVersion 26
+        minSdkVersion 14
+        targetSdkVersion 20
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

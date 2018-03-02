@@ -83,7 +83,8 @@
         android:layout_height="wrap_content"
         app:focusDrawable="@drawable/code_input_focus_bg"
         app:normalDrawable="@drawable/code_input_normal_bg"
-        app:number="4" />
+        app:number="4"
+        app:textColor="@color/colorAccent" />
 
 
 </LinearLayout>
