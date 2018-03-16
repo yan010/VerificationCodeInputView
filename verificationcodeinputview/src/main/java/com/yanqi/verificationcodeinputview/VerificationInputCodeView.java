@@ -6,7 +6,6 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
-import android.support.annotation.Nullable;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.util.AttributeSet;
@@ -65,11 +64,11 @@ public class VerificationInputCodeView extends LinearLayout implements View.OnCl
         this(context, null);
     }
 
-    public VerificationInputCodeView(Context context, @Nullable AttributeSet attrs) {
+    public VerificationInputCodeView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public VerificationInputCodeView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public VerificationInputCodeView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
         TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.InputCode);
@@ -161,7 +160,7 @@ public class VerificationInputCodeView extends LinearLayout implements View.OnCl
                     inputTextView.setBackground(setSelector(mContext.getDrawable(R.drawable.focus_bg)
                             , mContext.getDrawable(R.drawable.normal_bg)));
                 } else {
-                    inputTextView.setBackground(setSelector(mContext.getResources().getDrawable(R.drawable.focus_bg)
+                    inputTextView.setBackgroundDrawable(setSelector(mContext.getResources().getDrawable(R.drawable.focus_bg)
                             , mContext.getResources().getDrawable(R.drawable.normal_bg)));
                 }
             }
@@ -179,6 +178,8 @@ public class VerificationInputCodeView extends LinearLayout implements View.OnCl
                 inputTextView.setMinWidth(500);//解决输入文字移位
             }
             inputTextView.setmOnKeyEventListener(this);
+            inputTextView.setFocusable(true);
+            inputTextView.setFocusableInTouchMode(true);
 
             final int finalI = i;
             addView(inputTextView, finalI);

@@ -27,7 +27,7 @@ public class InputTextView extends TextView {
     }
 
     public InputTextView(Context context, AttributeSet attrs) {
-        this(context, attrs, R.attr.editTextStyle);
+        this(context, attrs, 0);
     }
 
     public InputTextView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -77,6 +77,12 @@ public class InputTextView extends TextView {
             }
             return super.deleteSurroundingText(beforeLength, afterLength);
         }
+
+        @Override
+        public boolean commitText(CharSequence text, int newCursorPosition) {
+            mOnKeyEventListener.onAdd(text + "");
+            return false;
+        }
     }
 
     public interface OnKeyEventListener {
@@ -84,4 +90,5 @@ public class InputTextView extends TextView {
 
         void onDel();
     }
+
 }

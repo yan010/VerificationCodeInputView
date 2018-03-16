@@ -153,6 +153,6 @@
         <attr name="childHeight" format="dimension" />
         <attr name="average" format="boolean" />
         <attr name="textColor" format="color|reference" />
-        <attr name="textSize" />
+        <attr name="textSize" format="dimension" />
     </declare-styleable>
 </resources>

@@ -17,9 +17,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mInputCodeView = findViewById(R.id.code);
-        mTextView = findViewById(R.id.text);
-        mResultTextView = findViewById(R.id.text_result);
+        mInputCodeView = (VerificationInputCodeView) findViewById(R.id.code);
+        mTextView = (TextView) findViewById(R.id.text);
+        mResultTextView = (TextView) findViewById(R.id.text_result);
         mInputCodeView.setmOnKeyEvent(new VerificationInputCodeView.OnKeyEvent() {
             @Override
             public void onCodeChange(int position, String content) {
