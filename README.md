@@ -17,7 +17,7 @@
 #### Step 2. Add the dependency
 
 	dependencies {
-	        compile 'com.github.yan010:VerificationCodeInputView:v1.0'
+	        compile 'com.github.yan010:VerificationCodeInputView:v1.1'
 	}
 
 ## 使用方式
